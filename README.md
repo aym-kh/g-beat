@@ -13,7 +13,8 @@ Inspired by Mercedes-AMG and WILL.I.AM's *MBUX SOUND DRIVE*, **G-Beat** is an ex
 
 ## Architecture Overview
 
-// will place here on github editor
+<img width="1194" height="1324" alt="image" src="https://github.com/user-attachments/assets/f75cf2bd-63f8-4bdf-bbc2-2940d8d59941" />
+
 
 1. **Motion Service:** Captures raw IMU G-force data and applies exponential moving average (EMA) smoothing.
 2. **Speed Service:** Monitors vehicle velocity in km/h for threshold-based stem switching.
