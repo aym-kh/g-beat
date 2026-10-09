@@ -23,3 +23,4 @@
    - Never pitch-shift or time-stretch mixed full tracks. Stick to stem layering and filter cutoff sweeps.
    - Always apply volume/parameter ramping ($50\text{ms} - 500\text{ms}$) to prevent digital audio popping.
 5. **Documentation:** Architectural decisions belong in `docs/rfcs/` or `docs/`. Task progress is tracked in `.ai/todo.md`.
+6. - Use the `inject()` function instead of constructor injection
