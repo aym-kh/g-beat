@@ -1,59 +1,45 @@
-# GBeat
+# G-Beat
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+**Real-time motion-reactive audio engine driven by mobile telemetry and Web Audio DSP.**
 
-## Development server
+Inspired by Mercedes-AMG and WILL.I.AM's *MBUX SOUND DRIVE*, **G-Beat** is an experimental hybrid mobile application built with **Angular**, **Capacitor**, and **Tone.js**. It transforms physical vehicle dynamics, instantaneous acceleration, braking G-forces, and baseline velocity into dynamic multitrack music transitions in real time.
 
-To start a local development server, run:
+## The Problem & Solution
 
-```bash
-ng serve
-```
+* **The Problem:** Standard GPS-based speed tracking has a 1–3 second latency and jitter. Changing song pitch/tempo strictly by speed leads to unnatural audio stretching and laggy feedback.
+* **The Solution:** G-Beat uses a **hybrid sensor fusion** approach:
+  * **Accelerometer & Gyroscope (60Hz):** Drives zero-latency Digital Signal Processing (DSP) filter sweeps (e.g., Low-Pass Filter cutoff) the millisecond acceleration happens.
+  * **GPS Geolocation (1Hz):** Anchors baseline speed tiers to dynamically mute/unmute synchronized audio stems (Drums, Bass, Synth) on beat measures.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Architecture Overview
 
-## Code scaffolding
+// will place here on github editor
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. **Motion Service:** Captures raw IMU G-force data and applies exponential moving average (EMA) smoothing.
+2. **Speed Service:** Monitors vehicle velocity in km/h for threshold-based stem switching.
+3. **Audio Engine:** Manages sample-accurate stem synchronization, gain nodes, and low-pass filter sweeps.
 
-```bash
-ng generate component component-name
-```
+## Tech Stack
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+* **Framework:** Angular (Standalone Components, Signals for state)
+* **Mobile Bridge:** Capacitor (`@capacitor/motion`, `@capacitor/geolocation`)
+* **Audio DSP:** Tone.js / Web Audio API
+* **Language:** TypeScript
 
-```bash
-ng generate --help
-```
 
-## Building
+## 🚀 Getting Started (Web Harness)
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Test the audio engine directly in your browser using interactive UI sliders for G-Force and Speed before flashing to mobile hardware:
 
 ```bash
-ng test
+# Clone the repository
+git clone [https://github.com/your-username/g-beat.git](https://github.com/your-username/g-beat.git)
+cd g-beat
+
+# Install dependencies
+npm install
+
+# Start local dev server
+npm start
+Open http://localhost:4200 to access the Web Testing Harness.
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
